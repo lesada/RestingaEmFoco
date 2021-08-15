@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Cadastro de Eventos</h1>
-    <a href="/inserirEVENTOS">Inserir eventos</a>
+    <a href="/inserirEventos">Inserir eventos</a>
     <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
      <tr>
         <th>Ação</th>
@@ -22,10 +22,10 @@
      <% EVENTOS.forEach((even, index) => { %>
         <tr>
             <td>
-            <a href = "atualizarEVENTOS?id=<%= even.ID %>"
+            <a href = "atualizarEventos?id=<%= even.ID %>"
                     >Atualizar   
                 </a>  &nbsp; &nbsp;
-            <a href = "excluirEVENTOS?id=<%= even.ID %>"
+            <a href = "excluirEventos?id=<%= even.ID %>"
                 >Excluir
             </a>
         </td>
