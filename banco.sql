@@ -8,7 +8,7 @@ use  RestingaEmFoco;
 	LNG TEXT,
 	NOME TEXT,
 	SOBRE TEXT,
-	DATAE DATE,
+	DATAE TEXT,
 	ABERTURA TEXT,
 	CONCLUSAO TEXT,
     PRIMARY KEY (ID)
@@ -39,7 +39,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'restinga'@'localhost';
 FLUSH PRIVILEGES;
 
 USE RestingaEmFoco;
-INSERT EVENTOS values(1,'-27.2114974','-49.6444793', 'Evento do IFRS', 'disajdiosajiodajs dsahdiusahdisua dsjaiojdsoai','1111-1111', 'teste', 'teste');
+INSERT EVENTOS values(1,'-27.2114974','-49.6444793', 'Evento do IFRS', 'É um evento padrão para a comunidade', '17/01/2022', '18:00', '19:00');
 
 USE RestingaEmFoco;
 INSERT ORGANIZADORES values(1, 'LAUREN', 'FERREIRA', '03626120000', 'RUA DAS PALMEIRAS', '');
