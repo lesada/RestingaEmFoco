@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Cadastro de Eventos</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Cadastro de Eventos</h1>
+    <a href="/inserirEVENTOS">Inserir eventos</a>
+    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+        <th>Ação</th>
+        <th>ID</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Nome</th>
+        <th>Sobre</th>
+        <th>Data</th>
+        <th>Abertura</th>
+        <th>Conclusão</th>
+        </th>
+     </tr>
+     <% EVENTOS.forEach((even, index) => { %>
+        <tr>
+            <td>
+            <a href = "atualizarEVENTOS?id=<%= even.ID %>"
+                    >Atualizar   
+                </a>  &nbsp; &nbsp;
+            <a href = "excluirEVENTOS?id=<%= even.ID %>"
+                >Excluir
+            </a>
+        </td>
+            <td><%= even.ID %></td>
+            <td><%= even.LAT %></td>
+            <td><%= even.LNG %></td>
+            <td><%= even.NOME %></td>
+            <td><%= even.SOBRE %></td>
+            <td><%= even.DATAE %></td>
+            <td><%= even.ABERTURA %></td>
+            <td><%= even.CONCLUSAO %></td>
+        </tr>
+    <% }) %>
+</table>
+</body>
+</html>

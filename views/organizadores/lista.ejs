@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Cadastro de Organizadores</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Cadastro de Organizadores</h1>
+    <a href="/inserirORGANIZADORES">Inserir organizadores</a>
+    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+        <th>Ação</th>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>CPF</th>
+        <th>Endereco</th>
+        <th>Telefone</th>
+     </tr>
+     <% ORGANIZADORES.forEach((org, index) => { %>
+        <tr>
+            <td>
+                <a href="atualizar?id=<%= org.id %>">Atualizar</a>&nbsp;
+                <a href="excluir?id=<%= org.id %>">Excluir</a>
+            </td>
+            <td><%= org.ID %></td>
+            <td><%= org.NOME %></td>
+            <td><%= org.SOBRENOME %></td>
+            <td><%= org.CPF %></td>
+            <td><%= org.ENDERECO %></td>
+            <td><%= org.TELEFONE %></td>
+        </tr>
+    <% }) %>
+</table>
+</body>
+</html>

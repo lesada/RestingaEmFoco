@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Cadastro de Locais</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Cadastro de Locais</h1>
+    <a href="/inserirLOCAIS">Inserir Locais</a>
+    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+        <th>Ação</th>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereco</th>
+     </tr>
+     <% LOCAIS.forEach((locais, index) => { %>
+        <tr>
+            <td>
+                <a href="atualizar?ID=<%= locais.ID %>">Atualizar</a>&nbsp;&nbsp;
+                <a href="excluir?ID=<%= locais.ID %>">Excluir</a>
+            </td>
+            <td><%= locais.ID %></td>
+            <td><%= locais.NOME %></td>
+            <td><%= locais.ENDERECO %></td>
+        </tr>
+    <% }) %>
+</table>
+</body>
+</html>

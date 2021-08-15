@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <title>Cadastro de Organizadores</title>
+  <meta charset="UTF-8">
+  <script language="javascript">
+    function validarInformacoesOrganizadores() {
+
+      var nome = document.getElementById("NOME").value;
+      var sobrenome = document.getElementById("SOBRENOME").value;
+      var cpf = document.getElementById("CPF").value;
+      var endereco = document.getElementById("ENDERECO").value;
+      var telefone = document.getElementById("TELEFONE").value;
+
+      var patternCpf = /^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$/
+
+
+      if (!(nome || sobrenome || cpf || endereco || telefone)) {
+        alert('Os campos nome, sobrenome, cpf, endereco e telefone são obrigatórios');
+        return false;
+      }
+
+      else if ((nome.length < 3) || (nome.length > 15)) {
+        alert('O campo nome deve ter no minimo 3 caracteres e máximo 15.');
+        return false;
+      }
+
+      else if ((sobrenome.length < 3) || (sobrenome.length > 25)) {
+        alert('O campo sobrenome deve ter no minimo 3 caracteres e máximo 25.');
+        return false;
+      }
+
+      else if (endereco.length < 10) {
+        alert('O campo sobrenome deve ter no minimo 10 caracteres.');
+        return false;
+      }
+
+      else if (telefone.length > 14) {
+        alert('O campo sobrenome deve ter no máximo 14 caracteres.');
+        return false;
+      }
+
+      else if (!patternCpf.test(cpf)) {
+        alert('O campo deve seguir o padrão 000.000.000-00');
+        return false;
+      }
+      
+
+      else
+        return true
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Cadastro de Organizadores</h1>
+
+  <form action="salvar" method="post" onsubmit="return validarInformacoesEventos()">
+
+    <label for="NOME">Nome:</label>
+    <input type="text" name="NOME" id="NOME" size="15" minlength="3" maxlength="15" required><br>
+
+    <label for="SOBRENOME">Sobrenome:</label>
+    <input type="text" name="SOBRENOME" id="SOBRENOME" size="15" minlength="3" maxlength="25" required><br>
+
+    <label for="CPF">CPF:</label>
+    <input type="text" name="CPF" id="CPF" size="30" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" required><br>
+
+    <label for="ENDERECO">Endereço:</label>
+    <input type="text" name="ENDERECO" id="ENDERECO" size="30" minlength="10"><br>
+
+    <label for="TELEFONE">Telefone:</label>
+    <input type="TElEFONE" name="TELEFONE" id="TELEFONE" size="10" maxlength="14"
+      pattern="\([0-9]{2}\)[0-9]{4,5}.[0-9]{4}" placeholder="(51)98333-9999" required><br>
+
+    <input type="submit" value="Salvar">
+    <input type="reset" value="Limpar">
+  </form>
+
+</body>
+
+</html>

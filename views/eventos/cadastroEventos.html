@@ -1,0 +1,74 @@
+<html>
+ <head>
+  <title>Cadastro Eventos</title>
+  <meta charset="UTF-8">
+  <script language="javascript">
+    function validarInformacoesEventos() {
+      var lat = document.getElementById("LAT").value;
+      var lng = document.getElementById("LNG").value;
+      var nome = document.getElementById("NOME").value;
+      var sobre = document.getElementById("SOBRE").value;
+      var data = document.getElementById("DATAE").value;
+      var abertura = document.getElementById("ABERTURA").value;
+      var conclusao = document.getElementById("CONCLUSAO").value;
+
+      var patternHora = /^[0-2][0-9]:[0-5][0-9]$/
+
+      if (!(nome || sobre || data || abertura || conclusao)) {
+				alert('Os campos nome, sobre, data, abertura e conclusão são obrigatórios');
+				return false;
+			}
+
+      else if ((nome.length < 5)|| (nome.length > 60)) {
+				alert('O campo nome deve ter no minimo 5 caracteres e máximo 6.');
+				return false;
+			}
+
+      else if (!patternHora.test(abertura && conclusao)) {
+				alert('O campo deve seguir o padrão hh:mm');
+				return false;
+			}
+
+      else
+      return true
+    }
+  </script>
+ </head>
+ <body>
+   <h1>Cadastro de Eventos</h1>
+   <form action="salvarEVENTOS" method="post" onsubmit="return validarInformacoesEventos()">
+
+    <label for="LAT">Lat:</label>
+    <input type="number" name="LAT" id="LAT" size="20" placeholder="Ex: 179.99999999"><br>
+
+    <label for="LNG">Lng:</label>
+    <input type="number" name="LNG" id="LNG" size="20" placeholder="Ex: 179.99999999"><br><br>
+
+    <label for="NOME">Nome:</label>
+    <input type="text" name="NOME" id="NOME" size="30" required maxlength="60" minlength="5" placeholder="Evento X"><br><br>
+
+    <label for="SOBRE">Sobre:</label>
+    <input type="text" name="SOBRE" id="SOBRE" size="50" placeholder="Conte-nos mais..." required><br><br>
+
+    <label for="DATAE">Data:</label>
+    <input type="date" name="DATAE" id="DATAE" size="15" placeholder="Ex: 17/01/2020" required>
+    <br><br>
+
+    <!-- Deixei abertura e conclusão como text por casusa do : -->
+
+    <label for="ABERTURA">Abertura:</label>
+    <input type="text" name="ABERTURA" id="ABERTURA" size="15" required maxlength="5" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="Ex: 17:00"><br>
+
+    <label for="CONCLUSAO">Conclusão:</label>
+    <input type="text" name="CONCLUSAO" id="CONCLUSAO" size="15" required maxlength="5" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="Ex: 22:00"><br><br>
+
+
+    <input type="submit" value="Salvar">
+    <input type="reset" value="Limpar">
+
+   </form>
+
+
+ </body>
+
+</html>
