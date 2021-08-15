@@ -26,28 +26,27 @@ const LOCAISDAO = require('./models/LOCAISDAO');
 const EVENTOSDAO = require('./models/EVENTOSDAO');
 const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
 
+// Para funcionar os CSS
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 
-
-
 app.get('/', function(req, res){
-
     res.sendFile(__dirname + '/views/home.html');
 });
 
 
 /*criar a parte de procurar eventos*/
 
-app.get('/procurarEVENTOS', function(req, res){
+app.get('/procurarEventos', function(req, res){
     var EVENTOS = new EVENTOSDAO();
     EVENTOS.list(con, function(result){
-     res.render('/', {EVENTOS: result});
+     res.render('lista.ejs', {EVENTOS: result});
     });  
 
 });
 
-app.get('/inserirEVENTOS', function(req, res){
+app.get('/inserirEventos', function(req, res){
     res.sendFile(__dirname + '/views/EVENTOS/cadastroEventos.html');
   
   });
@@ -66,14 +65,14 @@ app.get('/inserirEVENTOS', function(req, res){
     if (req.body.acao == "Atualizar") {
         EVENTOS.setID(req.body.ID);
         var retorno = EVENTOS.update(con);
-        res.sendFile(__dirname +  '/views/EVENTOS/resultado2.html')
+        res.sendFile(__dirname +  '/views/EVENTOS/procurarEventos.html')
       } else {
         if (req.body.acao == "Cancelar") {
           res.redirect("http://localhost:3000");
     
         } else {
           var retorno = EVENTOS.create(con);
-          res.sendFile(__dirname + '/views/EVENTOS/resultado2.html')
+          res.sendFile(__dirname + '/views/EVENTOS/procurarEventos.html')
         }
       }
     
@@ -85,7 +84,7 @@ app.get('/inserirEVENTOS', function(req, res){
       
         var retorno = EVENTOS.delete(con);
       
-        res.sendFile(__dirname + '/views/EVENTOS/resultado2.html')
+        res.sendFile(__dirname + '/views/EVENTOS/procurarEventos.html')
       });
       
       app.get('/atualizarEVENTOS', function (req, res) {
