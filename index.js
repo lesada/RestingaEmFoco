@@ -29,7 +29,7 @@ const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
 // Para funcionar os CSS
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
+// app.use(express.static(__dirname + '/views'));
 
 // Home
 
@@ -37,13 +37,24 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/home.html');
 });
 
+// Teste para listar
+
+// app.get('/', function(req, res){
+
+//   var EVENTOS = new EVENTOSDAO();
+//   EVENTOS.list(con, function(result){
+//   res.render('eventos/lista.ejs', {EVENTOS: result});
+// });
+
+// });
+
 
 /*criar a parte de procurar eventos*/
 
 app.get('/procurarEventos', function (req, res) {
   var EVENTOS = new EVENTOSDAO();
   EVENTOS.list(con, function (result) {
-    res.render('eventos/lista.ejs', { EVENTOS: result });
+    res.render('lista.ejs', { EVENTOS: result });
   });
 
 });
