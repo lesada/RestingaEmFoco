@@ -1,3 +1,5 @@
+// Geral
+
 const express = require('express');
 const app = express();
 app.listen(3000, function () {
@@ -21,11 +23,6 @@ con.connect(function (err) {
   console.log("Banco de dados conectado!");
 });
 
-
-const LOCAISDAO = require('./models/LOCAISDAO');
-const EVENTOSDAO = require('./models/EVENTOSDAO');
-const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
-
 // Para funcionar os CSS
 
 app.use(express.static(__dirname + '/public'));
@@ -37,55 +34,47 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/home.html');
 });
 
-// Teste para listar
+// Eventos
 
-// app.get('/', function(req, res){
+const EVENTOSDAO = require('./models/EVENTOSDAO');
+const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
+const LOCAISDAO = require('./models/LOCAISDAO');
 
-//   var EVENTOS = new EVENTOSDAO();
-//   EVENTOS.list(con, function(result){
-//   res.render('eventos/lista.ejs', {EVENTOS: result});
-// });
+app.get('/inserirEventos', function (req, res) {
+  res.sendFile(__dirname + '/views/eventos/cadastroEventos.html');
+});
 
-// });
-
-
-/*criar a parte de procurar eventos*/
 
 app.get('/procurarEventos', function (req, res) {
-  var EVENTOS = new EVENTOSDAO();
-  EVENTOS.list(con, function (result) {
-    res.render('lista.ejs', { EVENTOS: result });
+  var eventos = new EVENTOSDAO();
+  eventos.list(con, function (result) {
+    res.render('eventos/lista.ejs', { eventos: result });
   });
 
 });
 
-app.get('/inserirEventos', function (req, res) {
-  res.sendFile(__dirname + '/views/EVENTOS/cadastroEventos.html');
 
-});
-
-
-app.post('/salvarEVENTOS', function (req, res) {
-  var EVENTOS = new EVENTOSDAO();
-  EVENTOS.setLAT(req.body.LAT);
-  EVENTOS.setLNG(req.body.LNG);
-  EVENTOS.setNOME(req.body.NOME);
-  EVENTOS.setSOBRE(req.body.SOBRE);
-  EVENTOS.setDATAE(req.body.DATAE);
-  EVENTOS.setABERTURA(req.body.ABERTURA);
-  EVENTOS.setCONCLUSAO(req.body.CONCLUSAO);
+app.post('/salvarEventos', function (req, res) {
+  var eventos = new EVENTOSDAO();
+  eventos.setLAT(req.body.LAT);
+  eventos.setLNG(req.body.LNG);
+  eventos.setNOME(req.body.NOME);
+  eventos.setSOBRE(req.body.SOBRE);
+  eventos.setDATAE(req.body.DATAE);
+  eventos.setABERTURA(req.body.ABERTURA);
+  eventos.setCONCLUSAO(req.body.CONCLUSAO);
 
   if (req.body.acao == "Atualizar") {
-    EVENTOS.setID(req.body.ID);
-    var retorno = EVENTOS.update(con);
-    res.sendFile(__dirname + '/views/EVENTOS/procurarEventos.html')
+    eventos.setID(req.body.ID);
+    var retorno = eventos.update(con);
+    res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
   } else {
     if (req.body.acao == "Cancelar") {
       res.redirect("http://localhost:3000");
 
     } else {
-      var retorno = EVENTOS.create(con);
-      res.sendFile(__dirname + '/views/EVENTOS/procurarEventos.html')
+      var retorno = eventos.create(con);
+      res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
     }
   }
 

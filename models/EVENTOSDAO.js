@@ -1,127 +1,125 @@
 module.exports = class EVENTOSDAO {
 
-constructor() {
-  this.ID = 0;
-  this.LAT = "";
-  this.LNG = "";
-  this.NOME = "";
-  this.SOBRE = ""; 
-  this.DATAE = ""; 
-  this.ABERTURA = ""; 
-  this.CONCLUSAO = ""; 
+  constructor() {
+    this.ID = 0;
+    this.LAT = "";
+    this.LNG = "";
+    this.NOME = "";
+    this.SOBRE = "";
+    this.DATAE = "";
+    this.ABERTURA = "";
+    this.CONCLUSAO = "";
 
-}
+  }
 
-setID(z) {
-  this.ID = z; 
-}
+  setID(z) {
+    this.ID = z;
+  }
 
-getID() {
-  return this.ID;
-}
+  getID() {
+    return this.ID;
+  }
 
-setLAT(l) {
-  this.LAT = l; 
-}
+  setLAT(l) {
+    this.LAT = l;
+  }
 
-getLAT() {
-  return this.LAT;
-}
+  getLAT() {
+    return this.LAT;
+  }
 
-setLNG(g) {
-  this.LNG = g; 
-}
+  setLNG(g) {
+    this.LNG = g;
+  }
 
-getLNG() {
-  return this.LNG;
-}
-
-
-setNOME(n) {
-  this.NOME = n; 
-}
-
-getNOME() {
-  return this.NOME;
-}
-
-setSOBRE(s) {
-  this.SOBRE = s; 
-}
-
-getSOBRE() {
-  return this.SOBRE;
-}
+  getLNG() {
+    return this.LNG;
+  }
 
 
-setDATAE(i) {
-  this.DATAE = i; 
-}
+  setNOME(n) {
+    this.NOME = n;
+  }
 
-getDATAE() {
-  return this.DATAE;
-}
+  getNOME() {
+    return this.NOME;
+  }
 
-setABERTURA(a) {
-  this.ABERTURA = a; 
-}
+  setSOBRE(s) {
+    this.SOBRE = s;
+  }
 
-getABERTURA() {
-  return this.ABERTURA;
-}
+  getSOBRE() {
+    return this.SOBRE;
+  }
 
-setCONCLUSAO(c) {
-  this.CONCLUSAO = c; 
-}
 
-getCONCLUSAO() {
-  return this.CONCLUSAO;
-}
+  setDATAE(i) {
+    this.DATAE = i;
+  }
 
-create(connection) {
-  var sql = "INSERT INTO EVENTOS (LAT, LNG, NOME, SOBRE,  DATAE, ABERTURA, CONCLUSAO) VALUES(?, ?, ?, ?, ?, ?, ?)";
+  getDATAE() {
+    return this.DATAE;
+  }
 
-  connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO],
-    function (err, result) {
+  setABERTURA(a) {
+    this.ABERTURA = a;
+  }
+
+  getABERTURA() {
+    return this.ABERTURA;
+  }
+
+  setCONCLUSAO(c) {
+    this.CONCLUSAO = c;
+  }
+
+  getCONCLUSAO() {
+    return this.CONCLUSAO;
+  }
+
+  create(connection) {
+    var sql = "INSERT INTO EVENTOS (LAT, LNG, NOME, SOBRE,  DATAE, ABERTURA, CONCLUSAO) VALUES(?, ?, ?, ?, ?, ?, ?)";
+
+    connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO],
+      function (err, result) {
+        if (err) throw err;
+      });
+  }
+  list(connection, callback) {
+    var sql = "SELECT * FROM EVENTOS";
+
+    connection.query(sql, function (err, result) {
       if (err) throw err;
-      });
-    }
-     list(connection, callback) {
-       var sql ="SELECT * FROM EVENTOS";
-   
-       connection.query(sql, function (err, result) {
-           if (err) throw err;
-           return callback(result); 
-       });
-   
-     }
+      return callback(result);
+    });
 
-     delete (connection) {
-       var sql = "DELETE FROM EVENTOS WHERE ID = ?";
+  }
 
-       connection.query(sql, [this.ID], function (err, results)
-       {
-        if (err) throw err;
-       }); 
-     }
+  delete(connection) {
+    var sql = "DELETE FROM EVENTOS WHERE ID = ?";
 
-     buscarPorId (connection, callback) {
-      var sql = "DELETE FROM EVENTOS WHERE ID = ?";
+    connection.query(sql, [this.ID], function (err, results) {
+      if (err) throw err;
+    });
+  }
 
-      connection.query(sql, [this.ID], function (err, result)
-      {
-       if (err) throw err;
-       return callback (result);
-      }); 
-    }
+  buscarPorId(connection, callback) {
+    var sql = "DELETE FROM EVENTOS WHERE ID = ?";
 
-    update (connection) {
-      var sql = "UPDATE EVENTOS SET LAT = ?, LNG = ?, NOME = ?, SOBRE = ?, DATAE = ?, ABERTURA = ?, CONCLUSAO = ? WHERE ID = ?";
+    connection.query(sql, [this.ID], function (err, result) {
+      if (err) throw err;
+      return callback(result);
+    });
+  }
 
-      connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO, this.ID], function (err, result) {
-        if (err) throw err;
-      });
-    }
-   
-   }
+  update(connection) {
+    var sql = "UPDATE EVENTOS SET LAT = ?, LNG = ?, NOME = ?, SOBRE = ?, DATAE = ?, ABERTURA = ?, CONCLUSAO = ? WHERE ID = ?";
+
+    connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO, this.ID], function (err, result) {
+      if (err) throw err;
+    });
+  }
+
+}
 
