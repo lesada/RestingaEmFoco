@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Organizadores Cadastrados:</h1>
-    <a href="/inserirORGANIZADORES">Novo organizador</a>
+    <a href="/inserirOrganizadores">Novo organizador</a>
     <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
      <tr>
         <th>Ação</th>
@@ -19,8 +19,8 @@
      <% organizadores.forEach((org, index) => { %>
         <tr>
             <td>
-                <a href="atualizar?id=<%= org.id %>">Atualizar</a>&nbsp;
-                <a href="excluir?id=<%= org.id %>">Excluir</a>
+                <a href="atualizarOrganizadores?ID=<%= org.ID %>">Atualizar</a>&nbsp;
+                <a href="excluirOrganizadores?ID=<%= org.ID %>">Excluir</a>
             </td>
             <td><%= org.ID %></td>
             <td><%= org.NOME %></td>

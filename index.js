@@ -103,9 +103,9 @@ const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
 
 
 app.get('/inserirOrganizadores', function (req, res) {
-  res.sendFile(__dirname + '/views/organizadores/form_cadastro.html');
-
+  res.sendFile(__dirname + '/views/organizadores/formOrganizadores.html');
 });
+
 
 app.get('/procurarOrganizadores', function (req, res) {
   var organizadores = new ORGANIZADORESDAO();
@@ -116,46 +116,44 @@ app.get('/procurarOrganizadores', function (req, res) {
 });
 
 
-app.post('/salvarORGANIZADORES', function (req, res) {
-  var ORGANIZADORES = new ORGANIZADORESDAO();
-  ORGANIZADORES.setID(req.body.ID);
-  ORGANIZADORES.setNOME(req.body.NOME);
-  ORGANIZADORES.setSOBRENOME(req.body.SOBRENOME);
-  ORGANIZADORES.setCPF(req.body.CPF);
-  ORGANIZADORES.setENDERECO(req.body.ENDERECO);
-  ORGANIZADORES.setTELEFONE(req.body.TELEFONE);
+app.post('/salvarOrganizadores', function (req, res) {
+  var organizadores = new ORGANIZADORESDAO();
+  organizadores.setID(req.body.ID);
+  organizadores.setNOME(req.body.NOME);
+  organizadores.setSOBRENOME(req.body.SOBRENOME);
+  organizadores.setCPF(req.body.CPF);
+  organizadores.setENDERECO(req.body.ENDERECO);
+  organizadores.setTELEFONE(req.body.TELEFONE);
 
   if (req.body.acao == "Atualizar") {
-    ORGANIZADORES.setID(req.body.ID);
-    var retorno = ORGANIZADORES.update(con);
-    res.sendFile(__dirname + '/views/ORGANIZADORES/resultado.html');
+    organizadores.setID(req.body.ID);
+    var retorno = organizadores.update(con);
+    res.sendFile(__dirname + '/views/organizadores/resultado.html');
   } else {
     if (req.body.acao == "Cancelar") {
       res.redirect("http://localhost:3000");
     } else {
-      var retorno = ORGANIZADORES.create(con);
-      res.sendFile(__dirname + '/views/ORGANIZADORES/resultado.html');
+      var retorno = organizadores.create(con);
+      res.sendFile(__dirname + '/views/organizadores/resultado.html');
     }
   }
 
 });
 
-app.get('/excluirORGANIZADORES', function (req, res) {
-  var ORGANIZADORES = new ORGANIZADORESDAO();
-  ORGANIZADORES.setID(req.query.id);
+app.get('/excluirOrganizadores', function (req, res) {
+  var organizadores = new ORGANIZADORESDAO();
+  organizadores.setID(req.query.id);
 
-  var retorno = ORGANIZADORES.delete(con);
-  res.sendFile(__dirname + '/views/ORGANIZADORES/resultado.html');
-
-
+  var retorno = organizadores.delete(con);
+  res.sendFile(__dirname + '/views/organizadores/resultado.html');
 });
 
-app.get('/atualizarORGANIZADORES', function (req, res) {
-  var ORGANIZADORES = new ORGANIZADORESDAO();
-  ORGANIZADORES.setID(req.query.id);
+app.get('/atualizarOrganizadores', function (req, res) {
+  var organizadores = new ORGANIZADORESDAO();
+  organizadores.setID(req.query.id);
 
-  ORGANIZADORES.buscarPorID(con, function (result) {
-    res.render('form_cadastro.ejs', { ORGANIZADORES: result });
+  organizadores.buscarPorID(con, function (result) {
+    res.render('organizadores/formOrganizadores.ejs', { organizadores: result });
 
   });
 
