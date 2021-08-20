@@ -6,7 +6,7 @@ module.exports = class locaisDAO {
         this.ENDERECO = "";
     }
 
-    setID (I) {
+    setID(I) {
         this.ID = I;
     }
 
@@ -14,7 +14,7 @@ module.exports = class locaisDAO {
         return this.ID;
     }
 
-    setNOME (N) {
+    setNOME(N) {
         this.NOME = N;
     }
 
@@ -22,11 +22,11 @@ module.exports = class locaisDAO {
         return this.NOME;
     }
 
-    setENDERECO (E) {
+    setENDERECO(E) {
         this.ENDERECO = E;
     }
 
-    getENDERECO () {
+    getENDERECO() {
         return this.ENDERECO;
     }
 
@@ -37,35 +37,35 @@ module.exports = class locaisDAO {
             if (err) throw err;
         });
 
-        }
+    }
 
-        list(connection, callback) {
-            var sql = "SELECT * FROM LOCAIS";
+    list(connection, callback) {
+        var sql = "SELECT * FROM LOCAIS";
 
-            connection.query(sql, function (err, result) {
-                if (err) throw err;
-                return callback(result);
+        connection.query(sql, function (err, result) {
+            if (err) throw err;
+            return callback(result);
 
-            });
+        });
 
-        }
+    }
 
-            delete(connection) {
-            var sql = "delete from LOCAIS where ID = ?";
+    delete(connection) {
+        var sql = "delete from LOCAIS where ID = ?";
 
-            connection.query(sql, [this.ID], function (err, result) {
-                if (err) throw err;
-            });
-        }
+        connection.query(sql, [this.ID], function (err, result) {
+            if (err) throw err;
+        });
+    }
 
     buscarporID(connection, callback) {
         var sql = "SELECT * FROM LOCAIS WHERE ID = ?";
 
         connection.query(sql, [this.ID], function (err, result) {
             if (err) throw err;
-                return callback(result);
+            return callback(result);
 
-            });
+        });
     }
 
     update(connection) {

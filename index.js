@@ -148,6 +148,7 @@ app.get('/excluirOrganizadores', function (req, res) {
   res.sendFile(__dirname + '/views/organizadores/resultado.html');
 });
 
+
 app.get('/atualizarOrganizadores', function (req, res) {
   var organizadores = new ORGANIZADORESDAO();
   organizadores.setID(req.query.id);
