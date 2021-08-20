@@ -26,7 +26,7 @@ con.connect(function (err) {
 // Para funcionar os CSS
 
 app.use(express.static(__dirname + '/public'));
-// app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/views'));
 
 // Home
 
@@ -37,22 +37,10 @@ app.get('/', function (req, res) {
 // Eventos
 
 const EVENTOSDAO = require('./models/EVENTOSDAO');
-const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
-const LOCAISDAO = require('./models/LOCAISDAO');
 
 app.get('/inserirEventos', function (req, res) {
   res.sendFile(__dirname + '/views/eventos/cadastroEventos.html');
 });
-
-
-app.get('/procurarEventos', function (req, res) {
-  var eventos = new EVENTOSDAO();
-  eventos.list(con, function (result) {
-    res.render('eventos/lista.ejs', { eventos: result });
-  });
-
-});
-
 
 app.post('/salvarEventos', function (req, res) {
   var eventos = new EVENTOSDAO();
@@ -80,31 +68,50 @@ app.post('/salvarEventos', function (req, res) {
 
 });
 
-app.get('/excluirEVENTOS', function (req, res) {
-  var EVENTOS = new EVENTOSDAO();
-  EVENTOS.setID(req.query.id);
 
-  var retorno = EVENTOS.delete(con);
+app.get('/procurarEventos', function (req, res) {
+  var eventos = new EVENTOSDAO();
+  eventos.list(con, function (result) {
+    res.render('eventos/lista.ejs', { eventos: result });
+  });
 
-  res.sendFile(__dirname + '/views/EVENTOS/procurarEventos.html')
 });
 
-app.get('/atualizarEVENTOS', function (req, res) {
-  var EVENTOS = new EVENTOSDAO();
-  EVENTOS.setID(req.query.id);
 
-  EVENTOS.buscarPorId(con, function (result) {
-    res.render('/EVENTOS/form.ejs', { EVENTOS: result });
+app.get('/excluirEventos', function (req, res) {
+  var eventos = new EVENTOSDAO();
+  eventos.setID(req.query.id);
+
+  var retorno = eventos.delete(con);
+
+  res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
+});
+
+app.get('/atualizarEventos', function (req, res) {
+  var eventos = new EVENTOSDAO();
+  eventos.setID(req.query.id);
+
+  eventos.buscarPorId(con, function (result) {
+    res.render('eventos/form.ejs', { eventos: result });
   })
 
 });
 
+// Organizadores
+
+const ORGANIZADORESDAO = require('./models/ORGANIZADORESDAO');
 
 
-/*comeca os ORGANIZADORES. Renomear tudo com organizador e colocar na pasta views/organizadores*/
+app.get('/inserirOrganizadores', function (req, res) {
+  res.sendFile(__dirname + '/views/organizadores/form_cadastro.html');
 
-app.get('/inserirORGANIZADORES', function (req, res) {
-  res.sendFile(__dirname + '/views/ORGANIZADORES/form_cadastro.html');
+});
+
+app.get('/procurarOrganizadores', function (req, res) {
+  var organizadores = new ORGANIZADORESDAO();
+  organizadores.list(con, function (result) {
+    res.render('organizadores/lista.ejs', { organizadores: result });
+  });
 
 });
 
@@ -154,7 +161,9 @@ app.get('/atualizarORGANIZADORES', function (req, res) {
 
 });
 
-/*COMEÇA OS LOCAIS*/
+// Locais
+
+const LOCAISDAO = require('./models/LOCAISDAO');
 
 app.get('/inserirLOCAIS', function (req, res) {
 

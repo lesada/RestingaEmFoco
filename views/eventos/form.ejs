@@ -7,29 +7,29 @@
    <h1>Cadastro de Eventos</h1>
    <form action="salvarEventos" method="post" >
 
-    <input type="hidden" name="ID" id="ID"  value="<%= (EVENTOS.length > 0 ? EVENTOS[0].ID: '') %>">
+    <input type="hidden" name="ID" id="ID"  value="<%= (eventos.length > 0 ? eventos[0].ID: '') %>">
 
     <label for="LAT">Lat:</label>
-    <input type="text" name="LAT" id="LAT"  value="<%= (EVENTOS.length > 0 ? EVENTOS[0].LAT: '') %>" size="20"><br><br>
+    <input type="text" name="LAT" id="LAT"  value="<%= (eventos.length > 0 ? eventos[0].LAT: '') %>" size="20"><br><br>
 
     <label for="LNG">Lng:</label>
-    <input type="text" name="LNG" id="LNG" size="20" value="<%= (EVENTOS.length > 0 ? EVENTOS[0].LNG: '' ) %>"><br><br>
+    <input type="text" name="LNG" id="LNG" size="20" value="<%= (eventos.length > 0 ? eventos[0].LNG: '' ) %>"><br><br>
 
     <label for="NOME">Nome:</label>
-    <input type="text" name="NOME" id="NOME" size="15" value="<%= (EVENTOS.length > 0 ? EVENTOS[0].NOME: '' ) %>"><br><br>
+    <input type="text" name="NOME" id="NOME" size="15" value="<%= (eventos.length > 0 ? eventos[0].NOME: '' ) %>"><br><br>
 
     <label for="SOBRE">Sobre:</label>
-    <input type="text" name="SOBRE" id="SOBRE" size="50" value="<%= (EVENTOS.length > 0 ? EVENTOS[0].SOBRE: '' ) %>"><br><br>
+    <input type="text" name="SOBRE" id="SOBRE" size="50" value="<%= (eventos.length > 0 ? eventos[0].SOBRE: '' ) %>"><br><br>
 
     <label for="DATAE">Data:</label>
-    <input type="text" name="DATAE" id="DATAE" size="15"  value="<%= (EVENTOS.length > 0 ? EVENTOS[0].DATAE: '' ) %>"><br><br>
+    <input type="text" name="DATAE" id="DATAE" size="15"  value="<%= (eventos.length > 0 ? eventos[0].DATAE: '' ) %>"><br><br>
  
 
     <label for="ABERTURA">Abertura:</label>
-    <input type="text" name="ABERTURA" id="ABERTURA" size="15"  value="<%= (EVENTOS.length > 0 ? EVENTOS[0].ABERTURA: '' ) %>"><br><br>
+    <input type="text" name="ABERTURA" id="ABERTURA" size="15"  value="<%= (eventos.length > 0 ? eventos[0].ABERTURA: '' ) %>"><br><br>
 
     <label for="CONCLUSAO">Conclusão:</label>
-    <input type="text" name="CONCLUSAO" id="CONCLUSAO" size="15"  value="<%= (EVENTOS.length > 0 ? EVENTOS[0].CONCLUSAO: '' ) %>"><br><br>
+    <input type="text" name="CONCLUSAO" id="CONCLUSAO" size="15"  value="<%= (eventos.length > 0 ? eventos[0].CONCLUSAO: '' ) %>"><br><br>
 
 
     <input type="submit"  name = 'acao' value='Salvar'>
