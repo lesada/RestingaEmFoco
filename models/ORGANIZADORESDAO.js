@@ -92,7 +92,7 @@ module.exports = class ORGANIZADORESDAO {
   buscarPorID(connection, callback) {
     var sql = "SELECT * FROM ORGANIZADORES WHERE ID = ?";
 
-    connection.query(sql, [this.id], function (err, result) {
+    connection.query(sql, [this.ID], function (err, result) {
       if (err) throw err;
       return callback(result);
 
@@ -108,5 +108,4 @@ module.exports = class ORGANIZADORESDAO {
     });
 
   }
-
 }

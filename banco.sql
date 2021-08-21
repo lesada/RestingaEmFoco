@@ -22,7 +22,7 @@ SOBRENOME varchar(25) not null,
 CPF varchar (15) not null,
 ENDERECO varchar (20) not null,
 TELEFONE varchar(14) not null,
-primary key (id)
+primary key (ID)
 ); 
 
 CREATE TABLE IF NOT EXISTS LOCAIS (
@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS LOCAIS (
 
 CREATE USER IF NOT EXISTS 'restinga'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
 GRANT ALL PRIVILEGES ON * . * TO 'restinga'@'localhost';
-FLUSH PRIVILEGES;
 
 USE RestingaEmFoco;
 INSERT EVENTOS values(1,'-27.2114974','-49.6444793', 'Evento do IFRS', 'É um evento padrão para a comunidade', '17/01/2022', '18:00', '19:00');
