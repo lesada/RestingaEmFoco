@@ -17,11 +17,11 @@ use  RestingaEmFoco;
 CREATE TABLE ORGANIZADORES 
 (
 ID INT AUTO_INCREMENT NOT NULL,
-NOME varchar(15) not null,
-SOBRENOME varchar(25) not null,
-CPF varchar (15) not null,
-ENDERECO varchar (20) not null,
-TELEFONE varchar(14) not null,
+NOME TEXT,
+SOBRENOME TEXT,
+CPF TEXT,
+ENDERECO TEXT,
+TELEFONE TEXT,
 primary key (ID)
 ); 
 
