@@ -13,11 +13,11 @@
         <th>Nome</th>
         <th>Endereco</th>
      </tr>
-     <% LOCAIS.forEach((locais, index) => { %>
+     <% locais.forEach((locais, index) => { %>
         <tr>
             <td>
-                <a href="atualizar?ID=<%= locais.ID %>">Atualizar</a>&nbsp;&nbsp;
-                <a href="excluir?ID=<%= locais.ID %>">Excluir</a>
+                <a href="atualizarLocais?ID=<%= locais.ID %>">Atualizar</a>&nbsp;&nbsp;
+                <a href="excluirLocais?ID=<%= locais.ID %>">Excluir</a>
             </td>
             <td><%= locais.ID %></td>
             <td><%= locais.NOME %></td>

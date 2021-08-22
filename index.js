@@ -164,51 +164,59 @@ app.get('/atualizarOrganizadores', function (req, res) {
 
 const LOCAISDAO = require('./models/LOCAISDAO');
 
-app.get('/inserirLOCAIS', function (req, res) {
+app.get('/inserirLocais', function (req, res) {
 
-  res.sendFile(__dirname + '/views/LOCAIS/formlocais.html');
+  res.sendFile(__dirname + '/views/locais/formLocais.html');
+
+});
+
+app.get('/procurarLocais', function (req, res) {
+  var locais = new LOCAISDAO();
+    locais.list(con, function (result) {
+    res.render('locais/tabela.ejs', { locais: result });
+  });
 
 });
 
 
 app.post('/salvarLOCAIS', function (req, res) {
-  var LOCAIS = new locaisDAO();
-  LOCAIS.setID(req.body.ID);
-  LOCAIS.setNOME(req.body.NOME);
-  LOCAIS.setENDERECO(req.body.ENDERECO);
+  var locais = new LOCAISDAO();
+  locais.setID(req.body.ID);
+  locais.setNOME(req.body.NOME);
+  locais.setENDERECO(req.body.ENDERECO);
 
   if (req.body.acao == "Atualizar") {
-    LOCAIS.setID(req.body.ID);
-    var retorno = LOCAIS.update(con);
-    res.sendFile(__dirname + '/views/LOCAIS/resultado.html');
+    locais.setID(req.body.ID);
+    var retorno = locais.update(con);
+    res.sendFile(__dirname + '/views/locais/resultado.html');
   } else {
     if (req.body.acao == "excluir") {
       res.redirect("http://localhost:3000");
     } else {
-      var retorno = LOCAIS.create(con);
-      res.sendFile(__dirname + '/views/LOCAIS/resultado.html');
+      var retorno = locais.create(con);
+      res.sendFile(__dirname + '/views/locais/resultado.html');
     }
   }
 
 });
 
-app.get('/excluirLOCAIS', function (req, res) {
-  var LOCAIS = new locaisDAO();
-  LOCAIS.setID(req.query.ID);
+app.get('/excluirLocais', function (req, res) {
+  var locais = new LOCAISDAO();
+  locais.setID(req.query.ID);
 
-  var retorno = LOCAIS.delete(con);
+  var retorno = locais.delete(con);
 
-  res.sendFile(__dirname + '/views/LOCAIS/resultado.html');
+  res.sendFile(__dirname + '/views/locais/resultado.html');
 
 
 });
 
-app.get('/AtualizarLOCAIS', function (req, res) {
-  var LOCAIS = new locaisDAO();
-  LOCAIS.setID(req.query.ID);
+app.get('/AtualizarLocais', function (req, res) {
+  var locais = new LOCAISDAO();
+  locais.setID(req.query.ID);
 
-  LOCAIS.buscarporID(con, function (result) {
-    res.render('tabela.ejs', { LOCAIS: result });
+  locais.buscarporID(con, function (result) {
+    res.render('locais/form.ejs', { locais: result });
 
   });
 

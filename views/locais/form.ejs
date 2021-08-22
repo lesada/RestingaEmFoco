@@ -7,18 +7,21 @@
     <body>
         <h1>Cadastro de Locais</h1>
 
-        <form action="salvarLOCAIS" method="post">
+        <form action="salvarLocais" method="post">
 
 
             <br>
 
             <label for="NOME">Nome:</label>
-            <input type="text" name="NOME" value="<%= (LOCAIS.length > 0 ? LOCAIS[0].ID:"") %>" id="NOME" size="15"><br>
+            <input type="text" name="NOME" id="NOME" value="<%= (locais.length > 0 ? locais[0].NOME:'') %>"  size="15"><br>
+
+            <!-- <label for="NOME">Lat:</label>
+            <input type="text" name="NOME" id="NOME" value="<%= (locais.length > 0 ? locais[0].NOME: '') %>" size="20"><br><br> -->
 
             <br>
 
             <label for="ENDERECO">Endereço:</label>
-            <input type="text" name="ENDERECO" value="<%= (LOCAIS.length > 0 ? LOCAIS[0].ID:"") %>" id="ENDERECO" size="15"><br>
+            <input type="text" name="ENDERECO" id="ENDERECO" value="<%= (locais.length > 0 ? locais[0].ENDERECO:'') %>" size="15"><br>
             
             <br>
 
