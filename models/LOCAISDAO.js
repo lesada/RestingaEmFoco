@@ -31,9 +31,9 @@ module.exports = class locaisDAO {
     }
 
     create(connection) {
-        var sql = "insert into LOCAIS (ID, NOME, ENDERECO) values (?, ?, ?)";
+        var sql = "insert into LOCAIS (NOME, ENDERECO) values (?, ?)";
 
-        connection.query(sql, [this.ID, this.NOME, this.ENDERECO], function (err, result) {
+        connection.query(sql, [this.NOME, this.ENDERECO], function (err, result) {
             if (err) throw err;
         });
 
