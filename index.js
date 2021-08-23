@@ -252,7 +252,8 @@ app.post('/salvarFeedback', function (req, res) {
   var feedback = new FEEDBACKDAO();
   feedback.setID(req.body.ID);
   feedback.setNOME(req.body.NOME);
-  feedback.setENDERECO(req.body.ENDERECO);
+  feedback.setEMAIL(req.body.EMAIL);
+  feedback.setMENSAGEM(req.body.MENSAGEM);
 
   if (req.body.acao == "Atualizar") {
     feedback.setID(req.body.ID);
