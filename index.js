@@ -179,7 +179,7 @@ app.get('/procurarLocais', function (req, res) {
 });
 
 
-app.post('/salvarLOCAIS', function (req, res) {
+app.post('/salvarLocais', function (req, res) {
   var locais = new LOCAISDAO();
   locais.setID(req.body.ID);
   locais.setNOME(req.body.NOME);
@@ -211,7 +211,7 @@ app.get('/excluirLocais', function (req, res) {
 
 });
 
-app.get('/AtualizarLocais', function (req, res) {
+app.get('/atualizarLocais', function (req, res) {
   var locais = new LOCAISDAO();
   locais.setID(req.query.ID);
 

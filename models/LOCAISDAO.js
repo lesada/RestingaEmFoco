@@ -31,9 +31,9 @@ module.exports = class locaisDAO {
     }
 
     create(connection) {
-        var sql = "insert into LOCAIS (NOME, ENDERECO) values (?, ?)";
+        var sql = "insert into LOCAIS (ID, NOME, ENDERECO) values (?, ?, ?)";
 
-        connection.query(sql, [this.NOME, this.ENDERECO], function (err, result) {
+        connection.query(sql, [this.ID, this.NOME, this.ENDERECO], function (err, result) {
             if (err) throw err;
         });
 
@@ -76,12 +76,4 @@ module.exports = class locaisDAO {
 
         });
     }
-
-    update(connection) {
-        var sql = "UPDATE EVENTOS SET LAT = ?, LNG = ?, NOME = ?, SOBRE = ?, DATAE = ?, ABERTURA = ?, CONCLUSAO = ? WHERE ID = ?";
-    
-        connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO, this.ID], function (err, result) {
-          if (err) throw err;
-        });
-      }
 }
