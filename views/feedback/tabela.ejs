@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Feedbacks</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Cadastro de Feedback</h1>
+    <a href="/inserirFeedback">Mandar Feedback</a>
+    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
+     <tr>
+        <th>Ação</th>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Mensagem</th>
+     </tr>
+     <% feedback.forEach((feedback, index) => { %>
+        <tr>
+            <td>
+                <a href="atualizarFeedback?ID=<%= feedback.ID %>">Atualizar</a>&nbsp;&nbsp;
+                <a href="excluirFeedback?ID=<%= feedback.ID %>">Excluir</a>
+            </td>
+            <td><%= feedback.ID %></td>
+            <td><%= feedback.NOME %></td>
+            <td><%= feedback.EMAIL %></td>
+            <td><%= feedback.MENSAGEM %></td>
+        </tr>
+    <% }) %>
+</table>
+</body>
+</html>

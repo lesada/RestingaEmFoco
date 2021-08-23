@@ -1,0 +1,34 @@
+<html>
+
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+        <h1>Cadastro de Locais</h1>
+
+        <form action="salvarLocais" method="post">
+
+            <input type="hidden" name="ID" id="ID"  value="<%= (locais.length > 0 ? locais[0].ID: '') %>">
+
+            <br>
+
+            <label for="NOME">Nome:</label>
+            <input type="text" name="NOME" id="NOME" value="<%= (locais.length > 0 ? locais[0].NOME:'') %>"  size="15"><br>
+
+            <br>
+
+            <label for="ENDERECO">Endereço:</label>
+            <input type="text" name="ENDERECO" id="ENDERECO" value="<%= (locais.length > 0 ? locais[0].ENDERECO:'') %>" size="15"><br>
+            
+            <br>
+
+            <input type="submit" name="acao" value="Atualizar">
+            <input type="submit" name="acao" value="Limpar">
+
+        </form>
+
+    </body>
+
+
+</html>

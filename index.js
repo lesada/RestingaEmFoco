@@ -160,6 +160,10 @@ app.get('/atualizarOrganizadores', function (req, res) {
 
 });
 
+//#region [rgba (0,205,30,0.1)]
+
+
+
 // Locais
 
 const LOCAISDAO = require('./models/LOCAISDAO');
@@ -222,3 +226,67 @@ app.get('/atualizarLocais', function (req, res) {
 
 });
 
+//#endregion
+
+
+// feedback
+
+const FEEDBACKDAO = require('./models/FEEDBACKDAO');
+
+app.get('/inserirFeedback', function (req, res) {
+
+  res.sendFile(__dirname + '/views/feedback/formFeedback.html');
+
+});
+
+app.get('/procurarFeedback', function (req, res) {
+  var feedback = new FEEDBACKDAO();
+    feedback.list(con, function (result) {
+    res.render('feedback/tabela.ejs', { feedback: result });
+  });
+
+});
+
+
+app.post('/salvarFeedback', function (req, res) {
+  var feedback = new FEEDBACKDAO();
+  feedback.setID(req.body.ID);
+  feedback.setNOME(req.body.NOME);
+  feedback.setENDERECO(req.body.ENDERECO);
+
+  if (req.body.acao == "Atualizar") {
+    feedback.setID(req.body.ID);
+    var retorno = feedback.update(con);
+    res.sendFile(__dirname + '/views/feedback/resultado.html');
+  } else {
+    if (req.body.acao == "excluir") {
+      res.redirect("http://localhost:3000");
+    } else {
+      var retorno = feedback.create(con);
+      res.sendFile(__dirname + '/views/feedback/resultado.html');
+    }
+  }
+
+});
+
+app.get('/excluirFeedback', function (req, res) {
+  var feedback = new FEEDBACKDAO();
+  feedback.setID(req.query.ID);
+
+  var retorno = feedback.delete(con);
+
+  res.sendFile(__dirname + '/views/feedback/resultado.html');
+
+
+});
+
+app.get('/atualizarFeedback', function (req, res) {
+  var feedback = new FEEDBACKDAO();
+  feedback.setID(req.query.ID);
+
+  feedback.buscarporID(con, function (result) {
+    res.render('feedback/form.ejs', { feedback: result });
+
+  });
+
+});
