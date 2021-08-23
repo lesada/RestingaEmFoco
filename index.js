@@ -55,14 +55,14 @@ app.post('/salvarEventos', function (req, res) {
   if (req.body.acao == "Atualizar") {
     eventos.setID(req.body.ID);
     var retorno = eventos.update(con);
-    res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
+    res.sendFile(__dirname + '/views/home.html')
   } else {
     if (req.body.acao == "Cancelar") {
       res.redirect("http://localhost:3000");
 
     } else {
       var retorno = eventos.create(con);
-      res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
+      res.sendFile(__dirname + '/views/home.html')
     }
   }
 
@@ -84,7 +84,7 @@ app.get('/excluirEventos', function (req, res) {
 
   var retorno = eventos.delete(con);
 
-  res.sendFile(__dirname + '/views/eventos/procurarEventos.html')
+  res.sendFile(__dirname + '/views/home.html')
 });
 
 app.get('/atualizarEventos', function (req, res) {
@@ -128,13 +128,13 @@ app.post('/salvarOrganizadores', function (req, res) {
   if (req.body.acao == "Atualizar") {
     organizadores.setID(req.body.ID);
     var retorno = organizadores.update(con);
-    res.sendFile(__dirname + '/views/organizadores/resultado.html');
+    res.sendFile(__dirname + '/views/home.html');
   } else {
     if (req.body.acao == "Cancelar") {
       res.redirect("http://localhost:3000");
     } else {
       var retorno = organizadores.create(con);
-      res.sendFile(__dirname + '/views/organizadores/resultado.html');
+      res.sendFile(__dirname + '/views/home.html');
     }
   }
 
@@ -145,7 +145,7 @@ app.get('/excluirOrganizadores', function (req, res) {
   organizadores.setID(req.query.id);
 
   var retorno = organizadores.delete(con);
-  res.sendFile(__dirname + '/views/organizadores/resultado.html');
+  res.sendFile(__dirname + '/views/home.html');
 });
 
 
@@ -192,13 +192,13 @@ app.post('/salvarLocais', function (req, res) {
   if (req.body.acao == "Atualizar") {
     locais.setID(req.body.ID);
     var retorno = locais.update(con);
-    res.sendFile(__dirname + '/views/locais/resultado.html');
+    res.sendFile(__dirname + '/views/home.html');
   } else {
     if (req.body.acao == "excluir") {
       res.redirect("http://localhost:3000");
     } else {
       var retorno = locais.create(con);
-      res.sendFile(__dirname + '/views/locais/resultado.html');
+      res.sendFile(__dirname + '/views/home.html');
     }
   }
 
@@ -210,7 +210,7 @@ app.get('/excluirLocais', function (req, res) {
 
   var retorno = locais.delete(con);
 
-  res.sendFile(__dirname + '/views/locais/resultado.html');
+  res.sendFile(__dirname + '/views/home.html');
 
 
 });
@@ -258,13 +258,13 @@ app.post('/salvarFeedback', function (req, res) {
   if (req.body.acao == "Atualizar") {
     feedback.setID(req.body.ID);
     var retorno = feedback.update(con);
-    res.sendFile(__dirname + '/views/feedback/resultado.html');
+    res.sendFile(__dirname + '/views/home.html');
   } else {
     if (req.body.acao == "excluir") {
       res.redirect("http://localhost:3000");
     } else {
       var retorno = feedback.create(con);
-      res.sendFile(__dirname + '/views/feedback/resultado.html');
+      res.sendFile(__dirname + '/views/home.html');
     }
   }
 
@@ -276,7 +276,7 @@ app.get('/excluirFeedback', function (req, res) {
 
   var retorno = feedback.delete(con);
 
-  res.sendFile(__dirname + '/views/feedback/resultado.html');
+  res.sendFile(__dirname + '/views/home.html');
 
 
 });
