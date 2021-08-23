@@ -79,9 +79,9 @@ module.exports = class EVENTOSDAO {
   }
 
   create(connection) {
-    var sql = "INSERT INTO EVENTOS (LAT, LNG, NOME, SOBRE,  DATAE, ABERTURA, CONCLUSAO) VALUES(?, ?, ?, ?, ?, ?, ?)";
+    var sql = "INSERT INTO EVENTOS (ID, LAT, LNG, NOME, SOBRE,  DATAE, ABERTURA, CONCLUSAO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
-    connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO],
+    connection.query(sql, [this.ID, this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO],
       function (err, result) {
         if (err) throw err;
       });
@@ -105,12 +105,14 @@ module.exports = class EVENTOSDAO {
   }
 
   buscarPorId(connection, callback) {
-    var sql = "DELETE FROM EVENTOS WHERE ID = ?";
+    var sql = "SELECT  * FROM EVENTOS WHERE ID = ?";
 
     connection.query(sql, [this.ID], function (err, result) {
       if (err) throw err;
       return callback(result);
     });
+
+
   }
 
   update(connection) {

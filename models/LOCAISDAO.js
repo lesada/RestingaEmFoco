@@ -69,11 +69,19 @@ module.exports = class locaisDAO {
     }
 
     update(connection) {
-        var sql = "update LOCAIS set NOME = ?, ENDERECO = ? where ID = ?";
+        var sql = "UPDATE LOCAIS SET NOME = ?, ENDERECO = ? where ID = ?";
 
         connection.query(sql, [this.NOME, this.ENDERECO, this.ID], function (err, result) {
             if (err) throw err;
 
         });
     }
+
+    update(connection) {
+        var sql = "UPDATE EVENTOS SET LAT = ?, LNG = ?, NOME = ?, SOBRE = ?, DATAE = ?, ABERTURA = ?, CONCLUSAO = ? WHERE ID = ?";
+    
+        connection.query(sql, [this.LAT, this.LNG, this.NOME, this.SOBRE, this.DATAE, this.ABERTURA, this.CONCLUSAO, this.ID], function (err, result) {
+          if (err) throw err;
+        });
+      }
 }
