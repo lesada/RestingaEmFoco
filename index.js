@@ -285,7 +285,7 @@ app.get('/atualizarFeedback', function (req, res) {
   var feedback = new FEEDBACKDAO();
   feedback.setID(req.query.ID);
 
-  feedback.buscarporID(con, function (result) {
+  feedback.buscarPorID(con, function (result) {
     res.render('feedback/form.ejs', { feedback: result });
 
   });

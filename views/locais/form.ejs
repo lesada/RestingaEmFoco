@@ -1,34 +1,43 @@
 <html>
 
-    <head>
-        <title></title>
-    </head>
+<head>
+    <title>Locais</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/form.css">
+</head>
 
-    <body>
-        <h1>Cadastro de Locais</h1>
-
+<body>
+    <div class="form">
+        <h1 class="title">Cadastro de Locais</h1>
         <form action="salvarLocais" method="post">
+            <input type="hidden" name="ID" id="ID" value="<%= (locais.length > 0 ? locais[0].ID: '') %>">
 
-            <input type="hidden" name="ID" id="ID"  value="<%= (locais.length > 0 ? locais[0].ID: '') %>">
+            <div class="input-container ic1">
+                <input class="input" type="text" name="NOME" id="NOME"
+                    value="<%= (locais.length > 0 ? locais[0].NOME:'') %>" size="15" placeholder=" ">
+                    <div class="cut"></div>
+                <label class="placeholder" for="NOME">Nome:</label>
+            </div>
 
-            <br>
+            <div class="input-container ic2">
+                <input class="input" type="text" name="ENDERECO" id="ENDERECO"
+                value="<%= (locais.length > 0 ? locais[0].ENDERECO:'') %>" size="15" placeholder=" ">
+                <div class="cut"></div>
+                <label class="placeholder" for="ENDERECO">Endereço:</label>
+            </div>
 
-            <label for="NOME">Nome:</label>
-            <input type="text" name="NOME" id="NOME" value="<%= (locais.length > 0 ? locais[0].NOME:'') %>"  size="15"><br>
-
-            <br>
-
-            <label for="ENDERECO">Endereço:</label>
-            <input type="text" name="ENDERECO" id="ENDERECO" value="<%= (locais.length > 0 ? locais[0].ENDERECO:'') %>" size="15"><br>
-            
-            <br>
-
-            <input type="submit" name="acao" value="Atualizar">
-            <input type="submit" name="acao" value="Limpar">
-
+            <input class="submit" type="submit" name="acao" value="Atualizar">
         </form>
+    </div>
 
-    </body>
+</body>
 
 
 </html>

@@ -1,32 +1,44 @@
 <html>
 
-    <head>
-        <title></title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/form.css">
+    <title>Cadastro de Locais</title>
+</head>
 
-    <body>
-        <h1>Cadastro de Locais</h1>
+<body>
+    <div class="form">
+        <h1 class="title">Cadastro de Locais</h1>
 
         <form action="salvarLocais" method="post">
 
-            <br>
+            <div class="input-container ic1">
 
-            <label for="NOME">NOME:</label>
-            <input type="text" name="NOME" id="NOME" size="15" required="required"><br>
+                <input class="input" type="text" name="NOME" id="NOME" placeholder=" " required="required">
+                <div class="cut"></div>
+                <label class="placeholder" for="NOME">Nome:</label>
 
-            <br>
+            </div>
 
-            <label for="ENDERECO">ENDERECO:</label>
-            <input type="text" name="ENDERECO" id="ENDERECO" size="15" required="required"><br>
-            
-            <br>
+            <div class="input-container ic2">
+                <input class="input" type="text" name="ENDERECO" id="ENDERECO" size="15" required="required"
+                    placeholder=" ">
+                <div class="cut"></div>
+                <label class="placeholder" for="ENDERECO">Endereço:</label>
+            </div>
 
-            <input type="submit" value="Salvar">
-            <input type="reset" value="Limpar">
+            <input class="submit" type="submit" value="Salvar">
 
         </form>
-
-    </body>
+    </div>
+</body>
 
 
 </html>
