@@ -1,39 +1,54 @@
 <html>
 
-    <head>
-        <title></title>
-    </head>
+<head>
+    <title>Feedbacks</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/form.css">
+</head>
 
-    <body>
-        <h1>Atualizar Feedback</h1>
+<body>
+    <div class="form">
+        <h1 class="title">Atualizar Feedback</h1>
 
         <form action="salvarFeedback" method="post">
 
-            <input type="hidden" name="ID" id="ID"  value="<%= (feedback.length > 0 ? feedback[0].ID: '') %>">
+            <input type="hidden" name="ID" id="ID" value="<%= (feedback.length > 0 ? feedback[0].ID: '') %>">
 
-            <br>
 
-            <label for="NOME">Nome:</label>
-            <input type="text" name="NOME" id="NOME" value="<%= (feedback.length > 0 ? feedback[0].NOME:'') %>"  size="15"><br>
+            <div class="input-container ic1">
+                <input placeholder=" " class="input" type="text" name="NOME" id="NOME"
+                    value="<%= (feedback.length > 0 ? feedback[0].NOME:'') %>" size="15">
+                <div class="cut"></div>
+                <label class="placeholder" for="NOME">Nome:</label>
+            </div>
 
-            <br>
+            <div class="input-container ic1">
+                <input placeholder=" " class="input" type="text" name="EMAIL" id="EMAIL"
+                value="<%= (feedback.length > 0 ? feedback[0].EMAIL:'') %>" size="15">
+                <div class="cut"></div>
+                <label class="placeholder" for="EMAIL">Email:</label>
+            </div>
 
-            <label for="EMAIL">Email:</label>
-            <input type="text" name="EMAIL" id="EMAIL" value="<%= (feedback.length > 0 ? feedback[0].EMAIL:'') %>" size="15"><br>
-            
-            <br>
+            <div class="input-container ic1">
+                <input placeholder=" " class="input" type="text" name="MENSAGEM" id="MENSAGEM"
+                value="<%= (feedback.length > 0 ? feedback[0].MENSAGEM:'') %>" size="15">
+                <div class="cut"></div>
+                <label class="placeholder" for="MENSAGEM">Mensagem:</label>
+            </div>
 
-            <label for="MENSAGEM">Mensagem:</label>
-            <input type="text" name="MENSAGEM" id="MENSAGEM" value="<%= (feedback.length > 0 ? feedback[0].MENSAGEM:'') %>" size="15"><br>
-            
-            <br>
 
-            <input type="submit" name="acao" value="Atualizar">
-            <input type="submit" name="acao" value="Limpar">
+            <input class="submit" type="submit" name="acao" value="Atualizar">
 
         </form>
-
-    </body>
+    </div>
+</body>
 
 
 </html>
