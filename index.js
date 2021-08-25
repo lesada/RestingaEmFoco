@@ -291,3 +291,67 @@ app.get('/atualizarFeedback', function (req, res) {
   });
 
 });
+
+
+
+// vivencias
+
+const VIVENCIASDAO = require('./models/VIVENCIASDAO');
+
+app.get('/inserirVivencia', function (req, res) {
+
+  res.sendFile(__dirname + '/views/vivencias/formVivencia.html');
+
+});
+
+app.get('/procurarVivencias', function (req, res) {
+  var vivencias = new VIVENCIASDAO();
+    vivencias.list(con, function (result) {
+    res.render('vivencias/tabela.ejs', { vivencias: result });
+  });
+
+});
+
+
+app.post('/salvarVivencia', function (req, res) {
+  var vivencias = new VIVENCIASDAO();
+  vivencias.setID(req.body.ID);
+  vivencias.setNOME(req.body.NOME);
+  vivencias.setVIVENCIA(req.body.VIVENCIA);
+
+  if (req.body.acao == "Atualizar") {
+    vivencias.setID(req.body.ID);
+    var retorno = vivencias.update(con);
+    res.sendFile(__dirname + '/views/home.html');
+  } else {
+    if (req.body.acao == "excluir") {
+      res.redirect("http://localhost:3000");
+    } else {
+      var retorno = vivencias.create(con);
+      res.sendFile(__dirname + '/views/home.html');
+    }
+  }
+
+});
+
+app.get('/excluirVivencia', function (req, res) {
+  var vivencias = new VIVENCIASDAO();
+  vivencias.setID(req.query.ID);
+
+  var retorno = vivencias.delete(con);
+
+  res.sendFile(__dirname + '/views/home.html');
+
+
+});
+
+app.get('/atualizarVivencia', function (req, res) {
+  var vivencias = new VIVENCIASDAO();
+  vivencias.setID(req.query.ID);
+
+  vivencias.buscarPorID(con, function (result) {
+    res.render('vivencias/form.ejs', { vivencias: result });
+
+  });
+
+});

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Vivencias</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/form.css">
+</head>
+
+<body>
+    <div class="form">
+        <h1 class="title">Vivencia</h1>
+
+        <form action="salvarVivencia" method="post">
+
+            <div class="input-container ic1">
+                <input class="input"type="text" name="NOME" id="NOME" size="15" required="required">
+                <div class="cut"></div>
+                <label class="placeholder" for="NOME">Nome:</label>
+            </div>
+
+            <div class="input-container ic1">
+                <input class="input" type="text" name="VIVENCIA" id="VIVENCIA" size="15" required="required">
+                <div class="cut"></div>
+                <label class="placeholder" for="VIVENCIA">Mensagem:</label>
+            </div>
+
+            <input class="submit" type="submit" value="Salvar">
+        </form>
+    </div>
+</body>
+
+
+</html>

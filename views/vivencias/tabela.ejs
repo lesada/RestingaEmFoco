@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Todos os Vivencias</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
+</head>
+<body>
+    <h1>Todos os Vivencias</h1>
+    <button id="inserir"><a  href="/inserirVivencias">Mandar Vivência</a></button>
+    <table border="1" class="table table-bordered table-striped table-hover table-dark">
+     <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Vivência</th>
+     </tr>
+     <% vivencias.forEach((vivencias, index) => { %>
+        <tr>
+            <td>
+                <button><a href="atualizarVivencia?ID=<%= vivencias.ID %>">Atualizar</a></button>
+                <button><a href="excluirVivencia?ID=<%= vivencias.ID %>">Excluir</a></button>
+            </td>
+            <td><%= vivencias.ID %></td>
+            <td><%= vivencias.NOME %></td>
+            <td><%= vivencias.VIVENCIA %></td>
+        </tr>
+    <% }) %>
+</table>
+</body>
+</html>

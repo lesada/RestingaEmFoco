@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Vivenciass</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/form.css">
+</head>
+
+<body>
+    <div class="form">
+        <h1 class="title">Atualizar Vivencias</h1>
+
+        <form action="salvarVivencia" method="post">
+
+            <input type="hidden" name="ID" id="ID" value="<%= (vivencias.length > 0 ? vivencias[0].ID: '') %>">
+
+
+            <div class="input-container ic1">
+                <input placeholder=" " class="input" type="text" name="NOME" id="NOME"
+                    value="<%= (vivencias.length > 0 ? vivencias[0].NOME:'') %>" size="15">
+                <div class="cut"></div>
+                <label class="placeholder" for="NOME">Nome:</label>
+            </div>
+
+            <div class="input-container ic1">
+                <input placeholder=" " class="input" type="text" name="VIVENCIA" id="VIVENCIA"
+                value="<%= (vivencias.length > 0 ? vivencias[0].VIVENCIA:'') %>" size="15">
+                <div class="cut"></div>
+                <label class="placeholder" for="VIVENCIA">Vivência:</label>
+            </div>
+
+
+            <input class="submit" type="submit" name="acao" value="Atualizar">
+
+        </form>
+    </div>
+</body>
+
+
+</html>

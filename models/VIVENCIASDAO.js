@@ -3,8 +3,7 @@ module.exports = class locaisDAO {
     constructor() {
         this.ID = 0;
         this.NOME = "";
-        this.EMAIL = "";
-        this.MENSAGEM = "";
+        this.VIVENCIA = "";
     }
 
     setID(I) {
@@ -23,37 +22,29 @@ module.exports = class locaisDAO {
         return this.NOME;
     }
 
-    setEMAIL(E) {
-        this.EMAIL = E;
-    }
-
-    getEMAIL() {
-        return this.EMAIL;
-    }
-
     getENDERECO() {
         return this.EMAIL;
     }
 
-    setMENSAGEM(M) {
-        this.MENSAGEM = M;
+    setVIVENCIA(M) {
+        this.VIVENCIA = M;
     }
 
-    getMENSAGEM() {
-        return this.MENSAGEM;
+    getVIVENCIA() {
+        return this.VIVENCIA;
     }
 
     create(connection) {
-        var sql = "insert into FEEDBACK (ID, NOME, EMAIL, MENSAGEM) values (?, ?, ?, ?)";
+        var sql = "insert into VIVENCIAS (ID, NOME, VIVENCIA) values (?, ?, ?)";
 
-        connection.query(sql, [this.ID, this.NOME, this.EMAIL, this.MENSAGEM], function (err, result) {
+        connection.query(sql, [this.ID, this.NOME, this.VIVENCIA], function (err, result) {
             if (err) throw err;
         });
 
     }
 
     list(connection, callback) {
-        var sql = "SELECT * FROM FEEDBACK";
+        var sql = "SELECT * FROM VIVENCIAS";
 
         connection.query(sql, function (err, result) {
             if (err) throw err;
@@ -64,7 +55,7 @@ module.exports = class locaisDAO {
     }
 
     delete(connection) {
-        var sql = "delete from FEEDBACK where ID = ?";
+        var sql = "delete from VIVENCIAS where ID = ?";
 
         connection.query(sql, [this.ID], function (err, result) {
             if (err) throw err;
@@ -72,7 +63,7 @@ module.exports = class locaisDAO {
     }
 
     buscarPorID(connection, callback) {
-        var sql = "SELECT * FROM FEEDBACK WHERE ID = ?";
+        var sql = "SELECT * FROM VIVENCIAS WHERE ID = ?";
 
         connection.query(sql, [this.ID], function (err, result) {
             if (err) throw err;
@@ -82,9 +73,9 @@ module.exports = class locaisDAO {
     }
 
     update(connection) {
-        var sql = "UPDATE FEEDBACK SET NOME = ?, EMAIL = ?, MENSAGEM = ? WHERE ID = ?";
+        var sql = "UPDATE VIVENCIAS SET NOME = ?, VIVENCIA = ? WHERE ID = ?";
 
-        connection.query(sql, [this.NOME, this.EMAIL, this.MENSAGEM, this.ID], function (err, result) {
+        connection.query(sql, [this.NOME, this.VIVENCIA, this.ID], function (err, result) {
             if (err) throw err;
 
         });
