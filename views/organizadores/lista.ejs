@@ -1,14 +1,21 @@
 <html>
 <head>
-    <title>Cadastro de Organizadores</title>
+    <title>Todos os Organizadores</title>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
 </head>
 <body>
-    <h1>Organizadores Cadastrados:</h1>
-    <a href="/inserirOrganizadores">Novo organizador</a>
-    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
+    <h1>Todos os Organizadores</h1>
+    <button id="inserir"><a href="/inserirOrganizadores">Novo organizador</a></button>
+    <table border="1" class="table table-bordered table-striped table-hover table-dark">
      <tr>
-        <th>Ação</th>
+        <th>#</th>
         <th>ID</th>
         <th>Nome</th>
         <th>Sobrenome</th>
@@ -19,8 +26,8 @@
      <% organizadores.forEach((org, index) => { %>
         <tr>
             <td>
-                <a href= "atualizarOrganizadores?id=<%= org.ID %>">Atualizar</a>&nbsp;
-                <a href= "excluirOrganizadores?id=<%= org.ID %>">Excluir</a>
+                <button><a href= "atualizarOrganizadores?id=<%= org.ID %>">Atualizar</a></button>
+                <button><a href= "excluirOrganizadores?id=<%= org.ID %>">Excluir</a></button>
             </td>
             <td><%= org.ID %></td>
             <td><%= org.NOME %></td>

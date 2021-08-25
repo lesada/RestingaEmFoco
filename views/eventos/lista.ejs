@@ -1,44 +1,75 @@
 <html>
+
 <head>
-    <title>Cadastro de Eventos</title>
+    <title>Todos os Eventos</title>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
 </head>
+
 <body>
-    <h1>Cadastro de Eventos</h1>
-    <a href="/inserirEventos">Inserir eventos</a>
-    <table border="1" bodercolor ="#000000" cellpadding="0" cellspacing="0">
-     <tr>
-        <th>Ação</th>
-        <th>ID</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Nome</th>
-        <th>Sobre</th>
-        <th>Data</th>
-        <th>Abertura</th>
-        <th>Conclusão</th>
-        </th>
-     </tr>
-     <% eventos.forEach((even, index) => { %>
-        <tr>
-            <td>
-            <a href = "atualizarEventos?id=<%= even.ID %>"
-                    >Atualizar   
-                </a>  &nbsp; &nbsp;
-            <a href = "excluirEventos?id=<%= even.ID %>"
-                >Excluir
-            </a>
-        </td>
-            <td><%= even.ID %></td>
-            <td><%= even.LAT %></td>
-            <td><%= even.LNG %></td>
-            <td><%= even.NOME %></td>
-            <td><%= even.SOBRE %></td>
-            <td><%= even.DATAE %></td>
-            <td><%= even.ABERTURA %></td>
-            <td><%= even.CONCLUSAO %></td>
-        </tr>
-    <% }) %>
-</table>
+    <h1>Todos os Eventos</h1>
+    <button id="inserir"><a href="/inserirEventos">Inserir eventos</a></button>
+    <table border="1" class="table table-bordered table-striped table-hover table-dark">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Nome</th>
+                <th>Sobre</th>
+                <th>Data</th>
+                <th>Abertura</th>
+                <th>Conclusão</th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% eventos.forEach((even, index)=> { %>
+            <tr>
+                <td>
+                    <button>
+                    <a href="atualizarEventos?id=<%= even.ID %>">Atualizar
+                    </a></button>
+                    <button>
+                    <a href="excluirEventos?id=<%= even.ID %>">Excluir
+                    </a></button>
+                
+                </td>
+                <td>
+                    <%= even.ID %>
+                </td>
+                <td>
+                    <%= even.LAT %>
+                </td>
+                <td>
+                    <%= even.LNG %>
+                </td>
+                <td>
+                    <%= even.NOME %>
+                </td>
+                <td>
+                    <%= even.SOBRE %>
+                </td>
+                <td>
+                    <%= even.DATAE %>
+                </td>
+                <td>
+                    <%= even.ABERTURA %>
+                </td>
+                <td>
+                    <%= even.CONCLUSAO %>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
+
 </html>
